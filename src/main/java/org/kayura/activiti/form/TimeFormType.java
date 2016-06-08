@@ -1,25 +1,30 @@
 package org.kayura.activiti.form;
 
-import java.text.Format;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import org.activiti.engine.ActivitiIllegalArgumentException;
 import org.activiti.engine.form.AbstractFormType;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.FastDateFormat;
 
 public class TimeFormType extends AbstractFormType {
 
 	private static final long serialVersionUID = 1L;
 
-	protected String datePattern = "hh:ss:mm";
-	protected Format dateFormat;
+	protected String datePattern = "HH:mm:ss";
+	protected SimpleDateFormat dateFormat;
+
+	public TimeFormType() {
+		this.dateFormat = new SimpleDateFormat(datePattern);
+	}
 
 	public TimeFormType(String datePattern) {
+
 		if (datePattern != null && datePattern.length() > 0) {
 			this.datePattern = datePattern;
 		}
-		this.dateFormat = FastDateFormat.getInstance(datePattern);
+		this.dateFormat = new SimpleDateFormat(datePattern);
 	}
 
 	public String getName() {
@@ -38,7 +43,12 @@ public class TimeFormType extends AbstractFormType {
 			return null;
 		}
 		try {
-			return dateFormat.parseObject(propertyValue);
+			if (propertyValue.contains("CST")) {
+				SimpleDateFormat cstFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+				return cstFormat.parseObject(propertyValue);
+			} else {
+				return dateFormat.parseObject(propertyValue);
+			}
 		} catch (ParseException e) {
 			throw new ActivitiIllegalArgumentException("invalid date value " + propertyValue);
 		}

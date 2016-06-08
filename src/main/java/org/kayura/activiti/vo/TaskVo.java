@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.activiti.engine.task.DelegationState;
 import org.activiti.engine.task.Task;
+import org.kayura.serializer.DateTimeJsonSerializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class TaskVo implements Task, Serializable {
 
@@ -103,6 +106,7 @@ public class TaskVo implements Task, Serializable {
 	}
 
 	@Override
+	@JsonSerialize(using = DateTimeJsonSerializer.class)
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -113,6 +117,7 @@ public class TaskVo implements Task, Serializable {
 	}
 
 	@Override
+	@JsonSerialize(using = DateTimeJsonSerializer.class)
 	public Date getDueDate() {
 		return dueDate;
 	}
