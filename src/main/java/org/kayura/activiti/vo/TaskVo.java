@@ -1,7 +1,9 @@
 package org.kayura.activiti.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.task.DelegationState;
@@ -34,7 +36,17 @@ public class TaskVo implements Task, Serializable {
 	private boolean suspended;
 	private DelegationState delegationState;
 
+	public static List<TaskVo> fromTasks(List<Task> tasks) {
+
+		List<TaskVo> volist = new ArrayList<TaskVo>();
+		for (Task t : tasks) {
+			volist.add(new TaskVo(t));
+		}
+		return volist;
+	}
+
 	public TaskVo() {
+
 	}
 
 	public TaskVo(Task task) {

@@ -20,6 +20,7 @@ public class FormPropertyVo implements Serializable {
 	private boolean writeable = true;
 	private boolean required;
 
+	@SuppressWarnings("unchecked")
 	public FormPropertyVo(FormProperty formProperty) {
 
 		this.id = formProperty.getId();
