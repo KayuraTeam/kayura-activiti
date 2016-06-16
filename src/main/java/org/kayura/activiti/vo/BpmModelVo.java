@@ -20,6 +20,8 @@ public class BpmModelVo implements Serializable {
 	private Date updateTime;
 	private Integer version;
 	private String deploymentId;
+	private String resourceName;
+	private String diagramResourceName;
 
 	public static List<BpmModelVo> fromModels(List<Model> models) {
 
@@ -47,6 +49,8 @@ public class BpmModelVo implements Serializable {
 		this.description = o.getDescription();
 		this.version = o.getVersion();
 		this.deploymentId = o.getDeploymentId();
+		this.resourceName = o.getResourceName();
+		this.diagramResourceName = o.getDiagramResourceName();
 	}
 
 	public BpmModelVo(Model o) {
@@ -57,6 +61,8 @@ public class BpmModelVo implements Serializable {
 		this.version = o.getVersion();
 		this.updateTime = o.getLastUpdateTime();
 		this.deploymentId = o.getDeploymentId();
+		this.resourceName = "";
+		this.diagramResourceName = "";
 	}
 
 	public String getId() {
@@ -121,6 +127,22 @@ public class BpmModelVo implements Serializable {
 
 	public void setDeploymentId(String deploymentId) {
 		this.deploymentId = deploymentId;
+	}
+
+	public String getResourceName() {
+		return resourceName;
+	}
+
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
+	}
+
+	public String getDiagramResourceName() {
+		return diagramResourceName;
+	}
+
+	public void setDiagramResourceName(String diagramResourceName) {
+		this.diagramResourceName = diagramResourceName;
 	}
 
 }
