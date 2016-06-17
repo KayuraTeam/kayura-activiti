@@ -8,7 +8,7 @@ import org.activiti.engine.ActivitiIllegalArgumentException;
 import org.activiti.engine.form.AbstractFormType;
 import org.apache.commons.lang3.StringUtils;
 
-public abstract class AbstractDateFormType extends AbstractFormType {
+public abstract class AbsDateFormType extends AbstractFormType {
 
 	private static final long serialVersionUID = 1L;
 

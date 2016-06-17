@@ -2,7 +2,7 @@ package org.kayura.activiti.form;
 
 import java.text.SimpleDateFormat;
 
-public class DateTimeFormType extends AbstractDateFormType {
+public class DateTimeFormType extends AbsDateFormType {
 
 	private static final long serialVersionUID = 1L;
 
