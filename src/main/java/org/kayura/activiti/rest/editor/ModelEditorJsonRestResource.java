@@ -27,7 +27,8 @@ public class ModelEditorJsonRestResource implements ModelDataJsonConstants {
 	@Autowired
 	private RepositoryService repositoryService;
 
-	private ObjectMapper objectMapper = new ObjectMapper();
+	@Autowired
+	private ObjectMapper objectMapper;
 
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/model/{modelId}/json", method = RequestMethod.GET, produces = "application/json")
