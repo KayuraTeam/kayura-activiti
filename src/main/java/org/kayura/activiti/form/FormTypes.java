@@ -10,14 +10,13 @@ import org.activiti.engine.form.AbstractFormType;
 import org.activiti.engine.impl.form.BooleanFormType;
 import org.activiti.engine.impl.form.DoubleFormType;
 import org.activiti.engine.impl.form.EnumFormType;
-import org.activiti.engine.impl.form.FormTypes;
 import org.activiti.engine.impl.form.LongFormType;
 import org.activiti.engine.impl.form.StringFormType;
 import org.apache.commons.lang3.StringUtils;
 
-public class CustomFormTypes extends FormTypes {
+public class FormTypes extends org.activiti.engine.impl.form.FormTypes {
 
-	public CustomFormTypes() {
+	public FormTypes() {
 		addFormType(new StringFormType());
 		addFormType(new LongFormType());
 		addFormType(new BooleanFormType());

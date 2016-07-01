@@ -12,7 +12,7 @@ import org.activiti.engine.impl.persistence.AbstractManager;
 import org.activiti.engine.impl.persistence.entity.GroupEntity;
 import org.activiti.engine.impl.persistence.entity.GroupIdentityManager;
 
-public class CustomGroupEntityManager extends AbstractManager implements GroupIdentityManager {
+public class GroupEntityManagerImpl extends AbstractManager implements GroupIdentityManager {
 
 	public Group createNewGroup(String groupId) {
 		throw new RuntimeException("This method is not supported.");

@@ -16,7 +16,7 @@ import org.activiti.engine.impl.persistence.entity.IdentityInfoEntity;
 import org.activiti.engine.impl.persistence.entity.UserEntity;
 import org.activiti.engine.impl.persistence.entity.UserIdentityManager;
 
-public class CustomUserEntityManager extends AbstractManager implements UserIdentityManager {
+public class UserEntityManagerImpl extends AbstractManager implements UserIdentityManager {
 
 	public User createNewUser(String userId) {
 		throw new RuntimeException("This method is not supported.");

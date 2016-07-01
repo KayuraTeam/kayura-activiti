@@ -1,6 +1,6 @@
 package org.kayura.activiti.persistence;
 
-import org.kayura.activiti.persistence.entity.CustomUserEntityManager;
+import org.kayura.activiti.persistence.entity.UserEntityManagerImpl;
 
 import org.activiti.engine.impl.interceptor.Session;
 import org.activiti.engine.impl.interceptor.SessionFactory;
@@ -13,7 +13,7 @@ public class UserEntityManagerFactory implements SessionFactory {
 	}
 
 	public Session openSession() {
-		return new CustomUserEntityManager();
+		return new UserEntityManagerImpl();
 	}
 
 }

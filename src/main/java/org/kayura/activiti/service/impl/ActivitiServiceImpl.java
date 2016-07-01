@@ -79,4 +79,29 @@ public class ActivitiServiceImpl implements ActivitiService {
 		return items;
 	}
 
+	private List<Group> getGroupByUserId(String userId, String groupType) {
+
+		Map<String, Object> args = new HashMap<String, Object>();
+		args.put("userId", userId);
+		args.put("groupType", "D");
+
+		List<Group> list = identityMapper.loadGroups(args);
+
+		return list;
+	}
+
+	@Override
+	public Group getDepartByUserId(String userId) {
+
+		List<Group> list = getGroupByUserId(userId, "D");
+		return !list.isEmpty() ? list.get(0) : null;
+	}
+
+	@Override
+	public Group getPositionByUserId(String userId) {
+
+		List<Group> list = getGroupByUserId(userId, "P");
+		return !list.isEmpty() ? list.get(0) : null;
+	}
+
 }

@@ -3,7 +3,7 @@ package org.kayura.activiti.persistence;
 import org.activiti.engine.impl.interceptor.Session;
 import org.activiti.engine.impl.interceptor.SessionFactory;
 import org.activiti.engine.impl.persistence.entity.MembershipIdentityManager;
-import org.kayura.activiti.persistence.entity.CustomMembershipEntityManager;
+import org.kayura.activiti.persistence.entity.MembershipEntityManagerImpl;
 
 public class MembershipEntityManagerFactory implements SessionFactory {
 
@@ -12,7 +12,7 @@ public class MembershipEntityManagerFactory implements SessionFactory {
 	}
 
 	public Session openSession() {
-		return new CustomMembershipEntityManager();
+		return new MembershipEntityManagerImpl();
 	}
 
 }

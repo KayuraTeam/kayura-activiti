@@ -30,13 +30,22 @@
 
 	<select id="loadGroups" parameterType="map" resultMap="groupResultMap">
 		SELECT t.ID_, t.NAME_, t.TYPE_ FROM ACT_ID_GROUP t
+		<if test="userId != null">
+			INNER JOIN act_id_membership AS m ON t.ID_ = m.GROUP_ID_
+		</if>
 		<where>
 			<if test="ids != null">
-				t.ID_ IN ( 
+				AND ( t.ID_ IN ( 
 				<foreach collection="ids" item="id" index="index" separator=",">
 					#{id, jdbcType=VARCHAR}
 				</foreach>
-				)
+				) )
+			</if>
+			<if test="userId != null">
+				AND ( m.USER_ID_ = #{userId} )
+			</if>
+			<if test="groupType != null">
+				AND ( t.TYPE_ = #{groupType} )
 			</if>
 		</where>
 	</select>
