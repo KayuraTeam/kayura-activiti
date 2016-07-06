@@ -131,6 +131,11 @@
   		<artifactId>activiti-rest</artifactId>
   		<version>${activiti.version}</version>
   	</dependency>
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>5.1.39</version>
+  	</dependency>
   </dependencies>
   <properties>
   	<activiti.version>5.21.0</activiti.version>

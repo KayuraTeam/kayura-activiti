@@ -8,7 +8,7 @@ import java.util.Map;
 import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.User;
 import org.kayura.activiti.dao.IdentityMapper;
-import org.kayura.activiti.expression.AssignmenteExpr;
+import org.kayura.activiti.expression.AssignmenteExpression;
 import org.kayura.activiti.service.ActivitiService;
 import org.kayura.activiti.vo.AssignItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class ActivitiServiceImpl implements ActivitiService {
 	private IdentityMapper identityMapper;
 
 	@Autowired
-	private AssignmenteExpr assignmenteExpr;
+	private AssignmenteExpression assignmenteExpr;
 
 	@Override
 	public List<AssignItemVo> loadAssignUsersByIds(List<String> ids) {

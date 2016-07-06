@@ -2,7 +2,7 @@ package org.kayura.activiti.expression;
 
 import java.util.HashMap;
 
-public class AssignmenteExpr {
+public class AssignmenteExpression {
 
 	private HashMap<String, String> items = new HashMap<String, String>();
 
