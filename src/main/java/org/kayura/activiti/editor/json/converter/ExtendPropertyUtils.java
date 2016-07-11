@@ -24,6 +24,7 @@ public class ExtendPropertyUtils {
 	private static ObjectMapper objectMapper = new ObjectMapper();
 
 	public static final String ACTIVITI_NAMESPACE = "http://activiti.org/bpmn";
+	public static final String PROPERTY_EXTEND_ELEMENT_NAME = "extendProperty";
 	public static final String PROPERTY_EXTEND_PROPERTIES = "extendproperties";
 	public static final String PROPERTY_EXTEND_ID = "id";
 	public static final String PROPERTY_EXTEND_NAME = "name";
@@ -33,7 +34,7 @@ public class ExtendPropertyUtils {
 
 	public static void addExtendProperties(BaseElement element, ObjectNode propertiesNode) {
 
-		List<ExtensionElement> elements = element.getExtensionElements().get("extentProperty");
+		List<ExtensionElement> elements = element.getExtensionElements().get(PROPERTY_EXTEND_ELEMENT_NAME);
 		if (elements != null) {
 
 			ObjectNode extendPropertiesNode = objectMapper.createObjectNode();
@@ -73,7 +74,7 @@ public class ExtendPropertyUtils {
 					if (formIdNode != null && StringUtils.isNotEmpty(formIdNode.asText())) {
 
 						ExtensionElement extendElement = new ExtensionElement();
-						extendElement.setName("extentProperty");
+						extendElement.setName(PROPERTY_EXTEND_ELEMENT_NAME);
 						extendElement.setNamespace(ACTIVITI_NAMESPACE);
 
 						ExtensionAttribute idAttr = new ExtensionAttribute(PROPERTY_EXTEND_ID);
@@ -106,10 +107,9 @@ public class ExtendPropertyUtils {
 	public static List<ExtendPropertyHandler> parseExtendProperties(BpmnParse bpmnParse, FlowElement element) {
 
 		List<ExtendPropertyHandler> extendProperties = new ArrayList<ExtendPropertyHandler>();
-
+		
 		ExpressionManager expressionManager = bpmnParse.getExpressionManager();
-
-		List<ExtensionElement> elements = element.getExtensionElements().get("extentProperty");
+		List<ExtensionElement> elements = element.getExtensionElements().get(PROPERTY_EXTEND_ELEMENT_NAME);
 		if (elements != null) {
 			for (ExtensionElement ee : elements) {
 

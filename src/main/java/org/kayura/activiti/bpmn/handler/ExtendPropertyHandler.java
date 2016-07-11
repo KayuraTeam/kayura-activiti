@@ -27,6 +27,8 @@ public class ExtendPropertyHandler implements Serializable {
 				if (variableScope.hasVariable(varName)) {
 					modelValue = variableScope.getVariable(varName);
 				}
+			} else {
+				modelValue = expression.getValue(variableScope);
 			}
 		}
 

@@ -1,4 +1,4 @@
-package org.kayura.activiti.dao;
+package org.kayura.activiti.repository;
 
 import java.util.List;
 import java.util.Map;
