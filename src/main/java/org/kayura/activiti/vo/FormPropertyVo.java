@@ -2,9 +2,9 @@ package org.kayura.activiti.vo;
 
 import java.io.Serializable;
 import java.util.Map;
-import java.util.Objects;
 
 import org.activiti.engine.form.FormProperty;
+import org.kayura.utils.StringUtils;
 
 public class FormPropertyVo implements Serializable {
 
@@ -27,7 +27,7 @@ public class FormPropertyVo implements Serializable {
 		this.name = formProperty.getName();
 		this.value = formProperty.getValue();
 		this.type = formProperty.getType().getName();
-		this.datePattern = Objects.toString(formProperty.getType().getInformation("datePattern"));
+		this.datePattern = StringUtils.toString(formProperty.getType().getInformation("datePattern"));
 		this.setItems(((Map<String, String>) formProperty.getType().getInformation("values")));
 		this.readable = formProperty.isReadable();
 		this.writeable = formProperty.isWritable();

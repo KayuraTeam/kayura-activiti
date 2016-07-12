@@ -3,7 +3,6 @@
 	<name>kayura-activiti</name>
 	<comment></comment>
 	<projects>
-		<project>kayura-core</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

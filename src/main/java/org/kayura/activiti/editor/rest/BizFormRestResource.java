@@ -69,8 +69,6 @@ public class BizFormRestResource {
 	@RequestMapping(value = "/bizform/tree", method = RequestMethod.GET, produces = "application/json")
 	public List bizNavTree(String tenantId) {
 
-		List<TreeNode> nodes = new ArrayList<TreeNode>();
-
 		TreeNode root = new TreeNode("ROOT", "所有表单定义");
 		root.addAttr("key", "");
 
@@ -105,6 +103,7 @@ public class BizFormRestResource {
 			}
 		}
 
+		List<TreeNode> nodes = new ArrayList<TreeNode>();
 		nodes.add(root);
 		return ui.convertNodes(nodes);
 	}

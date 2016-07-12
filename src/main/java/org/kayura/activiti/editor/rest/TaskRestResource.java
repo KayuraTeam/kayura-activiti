@@ -65,9 +65,9 @@ public class TaskRestResource {
 		return ui.putData(pageList);
 	}
 
-	@RequestMapping(value = "/task/{taskId}/claim", method = RequestMethod.POST)
+	@RequestMapping(value = "/task/{taskId}/{userId}/claim", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void taskClaim(@PathVariable String taskId, String userId) {
+	public void taskClaim(@PathVariable String taskId, @PathVariable String userId) {
 
 		taskService.claim(taskId, userId);
 	}

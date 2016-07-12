@@ -139,7 +139,6 @@ public class IdentityRestResource {
 		}
 
 		List<AssignItemVo> items = new ArrayList<AssignItemVo>();
-
 		if (!idArgs.isEmpty()) {
 			if (type.equals("U")) {
 				items = activitiService.loadAssignUsersByIds(idArgs);
