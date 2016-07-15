@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AssignmentElResolver extends ELResolver {
 
 	@Autowired
-	private ActivitiService activitiService;
+	protected ActivitiService activitiService;
 
 	@Override
 	public Class<?> getCommonPropertyType(ELContext context, Object base) {

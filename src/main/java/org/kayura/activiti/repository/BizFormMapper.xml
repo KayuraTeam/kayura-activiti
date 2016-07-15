@@ -42,12 +42,17 @@
 		</where>
 	</select>
 		
-	<select id="loadBizForms" parameterType="string" resultMap="bizFormResultMap">
+	<select id="loadBizForms" parameterType="map" resultMap="bizFormResultMap">
 		SELECT <include refid="bizForm_Columns" />
 		FROM uasp_bizform AS t
-		<if test="value != null">
-			WHERE ( t.Tenant_Id = #{value} )
-		</if>
+		<where>
+			<if test="tenantId != null">
+				AND ( t.Tenant_Id = #{tenantId} )
+			</if>
+			<if test="status != null">
+				AND ( t.Status = #{status} )
+			</if>
+		</where>
 	</select>
 	
 	<select id="getBizFormById" parameterType="map" resultMap="bizFormResultMap">

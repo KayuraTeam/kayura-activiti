@@ -79,7 +79,12 @@ public class ModelRestResource {
 
 		if (type != null && type == 0) {
 
-			ModelQuery query = repositoryService.createModelQuery().modelTenantId(tenantId);
+			ModelQuery query = repositoryService.createModelQuery();
+
+			if (StringUtils.isNotEmpty(tenantId)) {
+				query.modelTenantId(tenantId);
+			}
+
 			if (StringUtils.isNotEmpty(key)) {
 				query.modelKey(key);
 			}
@@ -90,8 +95,12 @@ public class ModelRestResource {
 
 		} else if (type != null && (type == 1 || type == 2)) {
 
-			ProcessDefinitionQuery query = repositoryService.createProcessDefinitionQuery()
-					.processDefinitionTenantId(tenantId);
+			ProcessDefinitionQuery query = repositoryService.createProcessDefinitionQuery();
+			
+			if (StringUtils.isNotEmpty(tenantId)) {
+				query.processDefinitionTenantId(tenantId);
+			}
+			
 			if (StringUtils.isNotEmpty(key)) {
 				query.processDefinitionKey(key);
 			}

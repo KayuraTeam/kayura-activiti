@@ -55,7 +55,7 @@ public class TaskRestResource {
 
 		long count = taskQuery.count();
 		List<Task> list = taskQuery.listPage(pp.getOffset(), pp.getLimit());
-		
+
 		List<TaskVo> tasks = TaskVo.fromTasks(list);
 		for (TaskVo task : tasks) {
 			task.setVariables(runtimeService.getVariables(task.getExecutionId()));

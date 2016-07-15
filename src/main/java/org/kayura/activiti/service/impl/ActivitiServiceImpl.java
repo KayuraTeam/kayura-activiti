@@ -16,8 +16,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ActivitiServiceImpl implements ActivitiService {
 
-	@Autowired
-	private IdentityMapper identityMapper;
+	@Autowired(required = false)
+	protected IdentityMapper identityMapper;
+
+	public void setIdentityMapper(IdentityMapper identityMapper) {
+		this.identityMapper = identityMapper;
+	}
 
 	@Override
 	public List<AssignItemVo> loadAssignUsersByIds(List<String> ids) {

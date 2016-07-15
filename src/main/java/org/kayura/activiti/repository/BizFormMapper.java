@@ -13,7 +13,7 @@ public interface BizFormMapper {
 
 	PageList<BizForm> findBizForms(Map<String, Object> args, PageBounds pageBounds);
 
-	List<BizForm> loadBizForms(String tenantId);
+	List<BizForm> loadBizForms(Map<String, Object> args);
 
 	BizForm getBizFormById(Map<String, Object> args);
 

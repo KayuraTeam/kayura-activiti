@@ -20,15 +20,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class BizFormServiceImpl implements BizFormService {
 
-	@Autowired
+	@Autowired(required = false)
 	protected BizFormMapper bizFormMapper;
+
+	public void setBizFormMapper(BizFormMapper bizFormMapper) {
+		this.bizFormMapper = bizFormMapper;
+	}
 
 	@Override
 	public Result<PageList<BizForm>> findBizForms(String tenantId, String keyword, PageParams pageParams) {
 
 		Map<String, Object> args = new HashMap<String, Object>();
 
-		if (StringUtils.isEmpty(tenantId)) {
+		if (StringUtils.isNotEmpty(tenantId)) {
 			args.put("tenantId", tenantId);
 		}
 
@@ -37,8 +41,13 @@ public class BizFormServiceImpl implements BizFormService {
 	}
 
 	public Result<List<BizForm>> loadBizForms(String tenantId) {
+		Map<String, Object> args = new HashMap<String, Object>();
 
-		List<BizForm> items = bizFormMapper.loadBizForms(tenantId);
+		if (StringUtils.isNotEmpty(tenantId)) {
+			args.put("tenantId", tenantId);
+		}
+		
+		List<BizForm> items = bizFormMapper.loadBizForms(args);
 		return new Result<List<BizForm>>(items);
 	}
 
