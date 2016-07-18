@@ -112,7 +112,7 @@ public class ModelRestResource {
 			}
 
 			long size = query.count();
-			List<ProcessDefinition> list = query.listPage(pp.getOffset(), pp.getLimit());
+			List<ProcessDefinition> list = query.orderByProcessDefinitionVersion().desc().listPage(pp.getOffset(), pp.getLimit());
 			pageList = new PageList<BpmModelVo>(BpmModelVo.fromDefinitions(list), new Paginator(size));
 		} else {
 
@@ -163,9 +163,13 @@ public class ModelRestResource {
 			String processName = modelNode.getName() + ".bpmn20.xml";
 			String pngName = modelNode.getName() + ".png";
 
-			repositoryService.createDeployment().name(modelNode.getName()).category(category)
-					.tenantId(modelNode.getTenantId()).addInputStream(pngName, extraSteam)
-					.addBpmnModel(processName, bpmnModel).deploy();
+			repositoryService.createDeployment()
+					.name(modelNode.getName())
+					.category(category)
+					.tenantId(modelNode.getTenantId())
+					.addInputStream(pngName, extraSteam)
+					.addBpmnModel(processName, bpmnModel)
+					.deploy();
 
 		} catch (Exception e) {
 			logger.error("Error Deploy Model", e);
@@ -255,7 +259,7 @@ public class ModelRestResource {
 	}
 
 	@RequestMapping(value = "/model/{modelId}/res", method = RequestMethod.GET)
-	public void viewProcess(HttpServletResponse response, @PathVariable String modelId, Integer status, Integer type) {
+	public void viewModel(HttpServletResponse response, @PathVariable String modelId, Integer status, Integer type) {
 
 		try {
 			if (status == 1 || status == 2) {
