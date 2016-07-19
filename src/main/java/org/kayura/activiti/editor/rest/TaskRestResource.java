@@ -71,4 +71,12 @@ public class TaskRestResource {
 
 		taskService.claim(taskId, userId);
 	}
+	
+	@RequestMapping(value = "/task/{taskId}/unclaim", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.OK)
+	public void taskUnClaim(@PathVariable String taskId) {
+
+		taskService.unclaim(taskId);
+	}
+	
 }
