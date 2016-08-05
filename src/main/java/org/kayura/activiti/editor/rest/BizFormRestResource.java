@@ -84,18 +84,21 @@ public class BizFormRestResource {
 				// 设计 type=0
 				TreeNode designNode = new TreeNode("DESIGN#" + b.getId(), "设计");
 				designNode.addAttr("key", b.getProcessKey());
+				designNode.addAttr("code", b.getCode());
 				designNode.addAttr("type", 0);
 				bizNode.addNode(designNode);
 
 				// 发布 type=1
 				TreeNode releaseNode = new TreeNode("RELEASE#" + b.getId(), "发布");
 				releaseNode.addAttr("key", b.getProcessKey());
+				releaseNode.addAttr("code", b.getCode());
 				releaseNode.addAttr("type", 1);
 				bizNode.addNode(releaseNode);
 
 				// 挂起 type=2
 				TreeNode suspendNode = new TreeNode("SUSPEND#" + b.getId(), "挂起");
 				suspendNode.addAttr("key", b.getProcessKey());
+				suspendNode.addAttr("code", b.getCode());
 				suspendNode.addAttr("type", 2);
 				bizNode.addNode(suspendNode);
 
