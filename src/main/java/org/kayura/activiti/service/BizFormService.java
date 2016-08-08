@@ -13,6 +13,8 @@ public interface BizFormService {
 	Result<PageList<BizForm>> findBizForms(String tenantId, String keyword, PageParams pageParams);
 
 	Result<List<BizForm>> loadBizForms(String tenantId);
+	
+	Result<BizForm> getBizFormsByCode(String tenantId, String code);
 
 	Result<BizForm> getBizFormsById(String bizFormId);
 

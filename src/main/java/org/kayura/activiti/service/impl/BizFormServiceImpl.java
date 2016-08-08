@@ -46,9 +46,19 @@ public class BizFormServiceImpl implements BizFormService {
 		if (StringUtils.isNotEmpty(tenantId)) {
 			args.put("tenantId", tenantId);
 		}
-		
+
 		List<BizForm> items = bizFormMapper.loadBizForms(args);
 		return new Result<List<BizForm>>(items);
+	}
+
+	public Result<BizForm> getBizFormsByCode(String tenantId, String code) {
+
+		Map<String, Object> args = new HashMap<String, Object>();
+		args.put("tenantId", tenantId);
+		args.put("code", code);
+
+		BizForm item = bizFormMapper.selectBizForm(args);
+		return new Result<BizForm>(item);
 	}
 
 	@Override

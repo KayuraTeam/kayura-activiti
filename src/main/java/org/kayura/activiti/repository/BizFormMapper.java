@@ -15,6 +15,8 @@ public interface BizFormMapper {
 
 	List<BizForm> loadBizForms(Map<String, Object> args);
 
+	BizForm selectBizForm(Map<String, Object> args);
+
 	BizForm getBizFormById(Map<String, Object> args);
 
 	void insertBizForm(BizForm bizForm);

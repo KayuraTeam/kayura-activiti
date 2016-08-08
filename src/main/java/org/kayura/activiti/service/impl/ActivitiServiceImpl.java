@@ -57,7 +57,7 @@ public class ActivitiServiceImpl implements ActivitiService {
 
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("userId", userId);
-		args.put("groupType", "D");
+		args.put("groupType", groupType);
 
 		List<Group> list = identityMapper.loadGroups(args);
 

@@ -55,6 +55,22 @@
 		</where>
 	</select>
 	
+	<select id="selectBizForm" parameterType="map" resultMap="bizFormResultMap">
+		SELECT <include refid="bizForm_Columns" />
+		FROM uasp_bizform AS t
+		<where>
+			<if test="tenantId != null">
+				AND ( t.Tenant_Id = #{tenantId} )
+			</if>
+			<if test="code != null">
+				AND ( t.Code = #{code} )
+			</if>
+			<if test="bizFormId != null">
+				AND ( t.BizForm_Id = #{bizFormId} )
+			</if>
+		</where>
+	</select>
+	
 	<select id="getBizFormById" parameterType="map" resultMap="bizFormResultMap">
 		SELECT <include refid="bizForm_Columns" />
 		FROM uasp_bizform AS t
