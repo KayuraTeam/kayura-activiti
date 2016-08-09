@@ -86,7 +86,7 @@ public class ModelRestResource {
 			}
 
 			if (StringUtils.isNotEmpty(key)) {
-				query.modelKey(key);
+				query.modelKey(key.toLowerCase());
 			}
 
 			long size = query.count();
@@ -96,13 +96,13 @@ public class ModelRestResource {
 		} else if (type != null && (type == 1 || type == 2)) {
 
 			ProcessDefinitionQuery query = repositoryService.createProcessDefinitionQuery();
-			
+
 			if (StringUtils.isNotEmpty(tenantId)) {
 				query.processDefinitionTenantId(tenantId);
 			}
-			
+
 			if (StringUtils.isNotEmpty(key)) {
-				query.processDefinitionKey(key);
+				query.processDefinitionKey(key.toLowerCase());
 			}
 
 			if (type == 1) {
@@ -112,7 +112,8 @@ public class ModelRestResource {
 			}
 
 			long size = query.count();
-			List<ProcessDefinition> list = query.orderByProcessDefinitionVersion().desc().listPage(pp.getOffset(), pp.getLimit());
+			List<ProcessDefinition> list = query.orderByProcessDefinitionVersion().desc().listPage(pp.getOffset(),
+					pp.getLimit());
 			pageList = new PageList<BpmModelVo>(BpmModelVo.fromDefinitions(list), new Paginator(size));
 		} else {
 
@@ -163,13 +164,9 @@ public class ModelRestResource {
 			String processName = modelNode.getName() + ".bpmn20.xml";
 			String pngName = modelNode.getName() + ".png";
 
-			repositoryService.createDeployment()
-					.name(modelNode.getName())
-					.category(category)
-					.tenantId(modelNode.getTenantId())
-					.addInputStream(pngName, extraSteam)
-					.addBpmnModel(processName, bpmnModel)
-					.deploy();
+			repositoryService.createDeployment().name(modelNode.getName()).category(category)
+					.tenantId(modelNode.getTenantId()).addInputStream(pngName, extraSteam)
+					.addBpmnModel(processName, bpmnModel).deploy();
 
 		} catch (Exception e) {
 			logger.error("Error Deploy Model", e);
@@ -228,9 +225,16 @@ public class ModelRestResource {
 	public void saveNewModel(Map<String, Object> map, String tenantId, String key, String name, String desc) {
 
 		try {
+			// "properties":{"process_id":"appleave","name":"璇峰亣鍗曞鎵?
 			ObjectNode editorNode = objectMapper.createObjectNode();
 			editorNode.put("id", "canvas");
 			editorNode.put("resourceId", "canvas");
+
+			ObjectNode properties = objectMapper.createObjectNode();
+			properties.put("process_id", key);
+			properties.put("name", name);
+			editorNode.set("properties", properties);
+
 			ObjectNode stencilSetNode = objectMapper.createObjectNode();
 			stencilSetNode.put("namespace", "http://b3mn.org/stencilset/bpmn2.0#");
 			editorNode.set("stencilset", stencilSetNode);

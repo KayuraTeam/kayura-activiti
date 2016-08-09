@@ -22,6 +22,7 @@ public class TaskVo implements Serializable {
 	private String owner;
 	private String assignee;
 	private String processInstanceId;
+	private String businessKey;
 	private String executionId;
 	private String processDefinitionId;
 	private Date createTime;
@@ -186,6 +187,14 @@ public class TaskVo implements Serializable {
 
 	public void setVariables(Map<String, Object> variables) {
 		this.variables = variables;
+	}
+
+	public String getBusinessKey() {
+		return businessKey;
+	}
+
+	public void setBusinessKey(String businessKey) {
+		this.businessKey = businessKey;
 	}
 
 }
