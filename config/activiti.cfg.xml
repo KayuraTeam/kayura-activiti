@@ -6,11 +6,11 @@
 		class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
 
 		<property name="jdbcDriver" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/kayura_db" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activiti_db" />
 		<property name="jdbcUsername" value="root" />
 		<property name="jdbcPassword" value="123456" />
 		
-		<property name="dbIdentityUsed" value="false" />
+		<property name="dbIdentityUsed" value="true" />
 		<property name="databaseSchemaUpdate" value="true" />
 		<property name="jobExecutorActivate" value="false" />
 		<property name="history" value="full" />

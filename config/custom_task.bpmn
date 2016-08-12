@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="appleave" name="请假流程" isExecutable="true">
+    <startEvent id="startevent" name="Start"></startEvent>
+    <userTask id="usertask" name="审批" activiti:assignee="${assignee}"></userTask>
+    <sequenceFlow id="flowStartTask" sourceRef="startevent" targetRef="usertask"></sequenceFlow>
+    <endEvent id="endevent" name="End"></endEvent>
+    <exclusiveGateway id="branch"></exclusiveGateway>
+    <sequenceFlow id="flowToBranch" sourceRef="usertask" targetRef="branch"></sequenceFlow>
+    <sequenceFlow id="flowToEnd" sourceRef="branch" targetRef="endevent">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${allowEnd == true}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flowToTask" sourceRef="branch" targetRef="usertask">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${allowEnd == false}]]></conditionExpression>
+    </sequenceFlow>
+    <dataObject id="allowEnd" name="allowEnd" itemSubjectRef="xsd:boolean">
+      <extensionElements>
+        <activiti:value>false</activiti:value>
+      </extensionElements>
+    </dataObject>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_appleave">
+    <bpmndi:BPMNPlane bpmnElement="appleave" id="BPMNPlane_appleave">
+      <bpmndi:BPMNShape bpmnElement="startevent" id="BPMNShape_startevent">
+        <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="110.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask" id="BPMNShape_usertask">
+        <omgdc:Bounds height="55.0" width="105.0" x="140.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent" id="BPMNShape_endevent">
+        <omgdc:Bounds height="35.0" width="35.0" x="350.0" y="110.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="branch" id="BPMNShape_branch">
+        <omgdc:Bounds height="40.0" width="40.0" x="280.0" y="107.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flowStartTask" id="BPMNEdge_flowStartTask">
+        <omgdi:waypoint x="95.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="140.0" y="127.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flowToBranch" id="BPMNEdge_flowToBranch">
+        <omgdi:waypoint x="245.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="126.0"></omgdi:waypoint>
+        <omgdi:waypoint x="280.0" y="127.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flowToEnd" id="BPMNEdge_flowToEnd">
+        <omgdi:waypoint x="320.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="127.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flowToTask" id="BPMNEdge_flowToTask">
+        <omgdi:waypoint x="300.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="299.0" y="191.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="191.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="155.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
