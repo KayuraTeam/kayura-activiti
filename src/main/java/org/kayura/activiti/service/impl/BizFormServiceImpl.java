@@ -90,6 +90,7 @@ public class BizFormServiceImpl implements BizFormService {
 		args.put("displayName", bizForm.getDisplayName());
 		args.put("processKey", bizForm.getProcessKey());
 		args.put("serial", bizForm.getSerial());
+		args.put("iconUrl", bizForm.getIconUrl());
 		args.put("description", bizForm.getDescription());
 		args.put("type", bizForm.getType());
 		args.put("status", bizForm.getStatus());

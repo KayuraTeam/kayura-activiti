@@ -8,6 +8,7 @@
 		<result property="code" column="Code" />
 		<result property="displayName" column="DisplayName" />
 		<result property="processKey" column="ProcessKey" />
+		<result property="iconUrl" column="IconUrl" />
 		<result property="serial" column="Serial" />
 		<result property="description" column="Description" />
 		<result property="type" column="Type" />
@@ -20,6 +21,7 @@
 		t.Code,
 		t.DisplayName,
 		t.ProcessKey,
+		t.IconUrl,
 		t.Serial,
 		t.Description,
 		t.Type,
@@ -84,6 +86,7 @@
 			Code,
 			DisplayName,
 			ProcessKey,
+			IconUrl,
 			Serial,
 			Description,
 			Type,
@@ -94,6 +97,7 @@
 			#{code},
 			#{displayName},
 			#{processKey},
+			#{iconUrl},
 			#{serial},
 			#{description},
 			#{type},
@@ -112,6 +116,9 @@
 			</if>
 			<if test="processKey != null">
 				ProcessKey = #{processKey},
+			</if>
+			<if test="iconUrl != null">
+				IconUrl = #{iconUrl},
 			</if>
 			<if test="serial != null">
 				Serial = #{serial},

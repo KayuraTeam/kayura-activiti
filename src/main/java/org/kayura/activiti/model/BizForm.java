@@ -19,6 +19,7 @@ public class BizForm implements Serializable {
 	private String code;
 	private String displayName;
 	private String processKey;
+	private String iconUrl;
 	private Integer serial = 0;
 	private String description;
 	private Integer type = 0;
@@ -104,6 +105,14 @@ public class BizForm implements Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public String getIconUrl() {
+		return iconUrl;
+	}
+
+	public void setIconUrl(String iconUrl) {
+		this.iconUrl = iconUrl;
 	}
 
 }
